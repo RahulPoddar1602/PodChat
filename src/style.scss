@@ -1,0 +1,331 @@
+@mixin mobile{
+    @media screen and (max-width:480px){
+        @content
+    }
+}
+@mixin tablet{
+    @media screen and (max-width:768px){
+        @content
+    }
+}
+@mixin laptop{
+    @media screen and (max-width:1200px){
+        @content
+    }
+}
+.formContainer{
+    background-color: aquamarine;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .formWrapper
+    {
+        background-color: burlywood;
+        box-shadow: 0.7rem 0.7rem rgb(26,26,26);
+        padding: 1.5rem 3rem;
+        border-radius: 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        justify-content: center;
+        align-items: center;
+        .logo{
+            color: chocolate;
+            font-weight: bold;
+            font-size: 1.5rem;
+            
+        }
+        .title
+        {
+            font-size: 1rem;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            gap:15px;
+            input{
+                padding: 15px;
+                border: none;
+                border-radius: 1rem;
+                box-shadow:  0.2rem 0.2rem rgb(26,26,26);
+                background-color: aquamarine;
+                transition: all 0.3s ease-in-out;
+                &::placeholder{
+                    color:rgba(26,26,26,0.5);
+                    letter-spacing: 0.1rem;
+                    text-align: center;
+                }
+                &:hover{
+                    outline: none;
+                    scale:1.2;
+                    border: none;
+                    background-color: greenyellow;
+                }
+                &:focus{
+                    outline: none;
+                    scale:1.2;
+                    border: none;
+                    background-color: yellow ;
+                }
+            }
+            button{
+                background-color: antiquewhite;
+                padding:1rem;
+                font-weight: bold;
+                border:none;
+                border-radius: 1rem;
+                box-shadow:  0.3rem 0.3rem rgb(26,26,26);
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                &:hover{
+                    background-color: greenyellow;
+                    color: navy;
+                    scale:1.2;
+                }
+            }
+            label{
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                font-size:1rem;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                &:active,&:hover{
+                    background-color: greenyellow;
+                    color: navy;
+                    scale:1.2;
+                }
+            }
+        }
+        p{
+            color: aqua;
+            font-size: 0.8rem;
+            margin-top:10px;
+        }
+    }
+}
+
+.home{
+    background-color: aquamarine;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    .container{
+        box-shadow: 0.7rem 0.7rem rgb(26,26,26);
+        overflow: hidden;
+        width: 65%;
+        height: 80%;
+        border-radius: 0.75rem;
+        display: flex;
+        @include tablet{
+            width: 90%;
+        }
+        .sidebar{
+            flex: 2;
+            background-color: aqua;
+            position: relative;
+            .navbar{
+                display: flex;
+                align-items: center;
+                background-color: navy;
+                height: 4rem;
+                padding: 0.75rem;
+                justify-content: space-between;
+                color:whitesmoke;
+                .logo{
+                    font-weight: bold;
+                    font-size: 1.5rem;
+                    @include tablet{
+                        display: none;
+                    }
+                }
+                .user{
+                    display: flex;
+                    font-size: 1.2rem;
+                    gap:0.5rem;
+                }
+                img{
+                    background-color: white;
+                    height: 2rem;
+                    width: 2rem;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    overflow: hidden;
+                }
+                button{
+                    background-color: aqua;
+                    color:black;
+                    box-shadow: 0.2rem 0.2rem rgb(26,26,26);
+                    font-size: 1rem;
+                    border:none;
+                    cursor: pointer;
+                    @include tablet{
+                        position: absolute; 
+                        bottom:1rem;
+                    }
+                    transition: all 0.3s ease-in-out;
+                    &:hover{
+                        background-color: yellow;
+                        scale:1.2;
+                        & span{
+                            display: none;
+                        }
+                        &:before{
+                            content:"BuhBye";
+                        }
+                    }
+                }
+            }
+            .search{
+                border-bottom: 1px solid gray;
+                .searchForm{
+                    padding: 0.5rem;
+                    border-bottom: 0.01rem solid gray;
+                    input{
+                        background-color: transparent;
+                        border: none;
+                        outline:none;
+                        &::placeholder{
+                            
+                        }
+                    }
+                }
+            }
+            .userChat{
+                padding: 0.5rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+                cursor: pointer;
+                transition: all 0.3s ease-in-out;
+                &:hover{
+                    background-color: coral;
+                }
+                img{
+                    width: 2.5rem;
+                    height: 2.5rem;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    box-shadow: 0.1rem 0.1rem rgb(26,26,26);
+                }
+                .userChatInfo{
+                    span{
+                        font-size:1rem;
+                        font-weight: 500;   
+                    }
+                    p{
+                        font-size: 0.8rem;
+                        color: #222;
+                    }
+                }
+            }
+        }
+        .chat{
+            flex: 3;
+            background-color: burlywood;
+            .chatInfo{
+                height: 3rem;
+                background-color: black;
+                display: flex;
+                align-items: center;
+                color: white;
+                justify-content: space-between;
+                padding: 0.5rem;
+            }
+            .chatIcons{
+                display: flex;
+                gap: 0.5rem;
+                img{
+                    height: 1.5rem;
+                    cursor: pointer;
+                }
+            }
+            .messages{
+                padding:0.5rem;
+                height: calc(100% - 9rem);
+                overflow-y: scroll;
+                &::-webkit-scrollbar {
+                    width: 0;
+                  }
+                .message{
+                    display: flex;
+                    gap:1.25rem;
+                    margin-bottom: 1.25rem;
+                    .messageInfo{
+                        display: flex;
+                        flex-direction: column;
+                        color: gray;
+                        font-weight: 300;
+                        img{
+                            box-shadow: 0.1rem 0.1rem rgb(26,26,26);
+                            width: 3rem;
+                            height: 3rem;
+                            border-radius: 50%;
+                            object-fit: cover; 
+                        }
+                    }
+                    .messageContent{
+                        max-width: 80%;
+                        display: flex;
+                        flex-direction: column;
+                        gap: 0.5rem;
+                        p{
+                            box-shadow: 0.1rem 0.1rem rgb(26,26,26);
+                            background-color: white;
+                            padding: 0.5rem 1rem;
+                            border-radius: 0 0.5rem 0.5rem 0.5rem;
+                            max-width: max-content;
+                        }
+                        img{
+                            width: 50%;
+                        }
+                    }
+                    &.owner{
+                        flex-direction: row-reverse;
+                        .messageContent{
+                            align-items: flex-end;
+                            p{
+                                background-color: aqua;
+                                border-radius: 0.5rem 0 0.5rem 0.5rem;
+                            }
+                        }
+                    }
+                }
+            }
+            .input{
+                height: 3rem;
+                background-color: white;
+                padding: 0.5rem; 
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                input{
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    font-size: 1rem;
+                    padding: 0.5rem;
+                }
+                .send{
+                    display: flex;
+                    align-items: center;
+                    gap: 0.5rem;
+                    img{
+                        height: 1.5rem;
+                        cursor: pointer;
+                    }
+                    button{
+                        border: none;
+                        padding: 0.5rem 0.8rem;
+                        color: white;
+                        background-color:black ;
+                        cursor: pointer;
+                        border-radius:1rem ;
+                    }
+                }
+            }
+        }
+    }
+}
